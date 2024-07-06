@@ -1,7 +1,30 @@
+templates:
+  RUN_SHELL: urxvt -e fish -i -C "{}" &
+  OPEN_VIM: urxvt -e fish -i -C "vim {}" &
+  OPEN_SHELL: urxvt -e fish -i -C "cd {}" &
+  OPEN_SHELL_VENV: urxvt -e fish -i -C "cd {} && source .venv/bin/activate-fish" &
 targets:
   go:
-    projects:
-      spacepass: cd $HOME/lab/projects/spacepass
-      spacemenu: cd $HOME/lab/projects/spacemenu
-    lab: cd $HOME/lab/
-  spacepass: spacepass
+    lab: 
+      lab: OPEN_SHELL,$HOME/Lab
+      spacepass: OPEN_SHELL_VENV, $HOME/Lab/projects/spacepass
+      spacemenu: OPEN_SHELL_VENV, $HOME/Lab/projects/spacemenu
+      spacelaser: OPEN_SHELL_VENV, $HOME/lab/projects/spacelaser
+  conf:
+    i3: OPEN_VIM, $HOME/.config/i3/config
+    i3blocks: OPEN_VIM, $HOME/.config/i3/i3blocks.conf
+    fish: OPEN_VIM, $HOME/.config/fish/config.fish
+    newsboat: OPEN_VIM, $HOME/.newsboat/config
+    picom: OPEN_VIM, $HOME/.config/picom.conf
+    ranger: OPEN_VIM, $HOME/.config/ranger/rc.conf
+    spacemacs: OPEN_VIM, $HOME/.spacemacs
+    vim: OPEN_VIM, $HOME/.vimrc
+    xinit: OPEN_VIM, $HOME/.xinitrc
+    xresources: OPEN_VIM, $HOME/.xResources
+  run:
+    emacs: emacs
+    thunderbird: thunderbird
+    firefox: firefox
+    code: code
+    ranger: RUN_SHELL,ranger
+    

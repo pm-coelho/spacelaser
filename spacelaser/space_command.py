@@ -10,7 +10,7 @@ class SpaceCommand:
 
     def _parse_panel(self, targets: Cluster) -> dict:
         return {
-            "label": "Space Command",
+            "label": "spacelaser",
             "branches": self._parse_clusters(targets.clusters),
             "leaves": self._parse_triggers(targets.triggers),
         }

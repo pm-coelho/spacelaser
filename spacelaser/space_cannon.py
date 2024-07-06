@@ -32,6 +32,7 @@ class Cluster(Node):
 class TargetPanel(Cluster):
     def __init__(self, schematics_path):
         self.schematics = self.load_schematics(schematics_path)
+        self.templates = self.schematics.get("templates")
         targets = self.parse_targets(self.schematics["targets"])
         super(TargetPanel, self).__init__("Space Command", targets)
 
@@ -48,21 +49,39 @@ class TargetPanel(Cluster):
 
     def parse_targets(self, targets):
         parsed_targets = []
-        for label, sub_targets in targets.items():
-            if isinstance(sub_targets, dict):
+        for label, value in targets.items():
+            if isinstance(value, dict):
                 parsed_targets.append(
                     {
                         "label": label,
-                        "clusters": self.parse_targets(sub_targets),
+                        "clusters": self.parse_targets(value),
                     }
                 )
             else:
-                parsed_targets.append(
-                    {
-                        "label": label,
-                        "command": sub_targets,
-                    }
-                )
+                values = value.split(",")
+                # Simple Command
+                if len(values) == 1:
+                    parsed_targets.append(
+                        {
+                            "label": label,
+                            "command": value,
+                        }
+                    )
+                # Templated Command
+                elif (
+                    self.templates
+                    and len(values) == 2
+                    and self.templates.get(values[0])
+                ):
+                    parsed_targets.append(
+                        {
+                            "label": label,
+                            "command": self.templates[values[0]].format(values[1]),
+                        }
+                    )
+                else:
+                    raise ValueError("Invalid target format")
+
         return parsed_targets
 
 
