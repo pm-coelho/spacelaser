@@ -1,0 +1,7 @@
+templates:
+  OPEN_VIM: urxvt -e fish -i -C "vim {}" &
+targets:
+  conf:
+    spacelaser: OPEN_VIM, $HOME/.config/spacelaser/config
+  run:
+    spacelaser: spacelaser
