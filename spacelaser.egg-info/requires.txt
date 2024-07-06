@@ -1,3 +1,0 @@
-spacemenu
-ConfigArgParse
-PyYAML
