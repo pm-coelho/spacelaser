@@ -1,0 +1,7 @@
+targets:
+  go:
+    projects:
+      spacepass: cd $HOME/lab/projects/spacepass
+      spacemenu: cd $HOME/lab/projects/spacemenu
+    lab: cd $HOME/lab/
+  spacepass: spacepass

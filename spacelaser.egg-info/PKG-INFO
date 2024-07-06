@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: spacelaser
+Version: 0.1
+Summary: A spacemacs inspired menu to help you execute automated shortcuts
+Home-page: https://github.com/pm-coelho/spacelaser
+Author: pmcoelho
+Author-email: pmcoelho@protonmail.com
+License: GPLv3+
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: X11 Applications
+Classifier: Environment :: X11 Applications :: GTK
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: POSIX :: Linux
+Description-Content-Type: text/markdown
+Requires-Dist: spacemenu
+Requires-Dist: ConfigArgParse
+Requires-Dist: PyYAML
+
+# SpacePass
+
+## Description
+
+## Installation
+
+## License
+GPL-3.0-or-later 

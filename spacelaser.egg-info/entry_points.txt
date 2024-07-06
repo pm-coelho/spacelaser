@@ -1,0 +1,2 @@
+[console_scripts]
+spacelaser = spacelaser.run:main
